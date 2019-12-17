@@ -20,24 +20,21 @@ public class Main {
         System.out.println("         /_/\\_\\_|_| |_| |_| .__/  \\_/\\_/");
         System.out.println("                           \\___|");
         System.out.println("-----------------------------------------------------");
-        System.out.println("https://github.com/wang-y/spring-boot-project-builder");
-        System.out.println("-----------------------------------------------------");
-        System.out.println("                                           (欢迎fork)");
-//        buildProject();
-        build();
+        buildProject();
+//        build();
     }
 
 
     private static void buildProject() {
-        ProjectConfig projectConfig = ProjectConfig.project("test").org()
+        ProjectConfig projectConfig = ProjectConfig.project("test2").org()
                 .name("wymix")
                 .enableSwagger()
                 .setDataBaseType(DataBaseType.MYSQL)
-                .JDBCconfigure("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC", "root", "123456")
-                .setOrmType(OrmType.JPA)
-                .setDataBaseConnectPool(DataBaseConnectPool.HIKARICP).enableDocker();
+                .JDBCconfigure("jdbc:mysql://127.0.0.1:3306/meituan?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC", "root", "xulei2048")
+                .setOrmType(OrmType.MYBATIS)
+                .setDataBaseConnectPool(DataBaseConnectPool.DRUID).enableDocker();
 
-        CodeBuilder.toFilePath("C:\\MySoft\\project").build(projectConfig);
+        CodeBuilder.toFilePath("/Users/xulei2/Desktop/").build(projectConfig);
     }
 
 
