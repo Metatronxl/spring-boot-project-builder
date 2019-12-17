@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,10 +73,15 @@ public final class CodeBuilder {
     }
 
 
-    public static CodeBuilder toFilePath(String path) {
+    public static CodeBuilder getInstance(){
         CodeBuilder codeBuilder = new CodeBuilder();
-        codeBuilder.path = path;
         return codeBuilder;
+    }
+
+
+    public  CodeBuilder toFilePath(String path) {
+        this.path = path;
+        return this;
     }
 
     public void build(ProjectConfig projectConfig) {

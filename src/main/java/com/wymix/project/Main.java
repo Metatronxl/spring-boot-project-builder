@@ -26,19 +26,23 @@ public class Main {
 
 
     private static void buildProject() {
-        ProjectConfig projectConfig = ProjectConfig.project("test2").org()
-                .name("wymix")
+        // 数据库中包含的表
+        String[] tables = new String[]{"meishi","test"};
+
+        ProjectConfig projectConfig = ProjectConfig.project("test2").com()
+                .name("noisy")
                 .enableSwagger()
                 .setDataBaseType(DataBaseType.MYSQL)
                 .JDBCconfigure("jdbc:mysql://127.0.0.1:3306/meituan?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC", "root", "xulei2048")
                 .setOrmType(OrmType.MYBATIS)
                 .setDataBaseConnectPool(DataBaseConnectPool.DRUID).enableDocker();
 
-        CodeBuilder.toFilePath("/Users/xulei2/Desktop/").build(projectConfig);
+        CodeBuilder.getInstance().toFilePath("/Users/xulei2/Desktop/").build(projectConfig);
     }
 
 
     private static void build() {
+
         System.out.print("请输入项目创建路径：");
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();
@@ -246,7 +250,7 @@ public class Main {
 
 
         System.out.println("开始构建 [" + project + "] 项目...");
-        CodeBuilder.toFilePath(path).cmd().build(projectConfig);
+        CodeBuilder.getInstance().toFilePath(path).build(projectConfig);
         System.out.println("构建 [" + project + "] 项目完毕！");
         System.out.println("请前往目录 [" + path + "] 下查看项目！");
     }
