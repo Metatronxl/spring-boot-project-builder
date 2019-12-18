@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 public class Generator {
 
@@ -17,10 +17,14 @@ public class Generator {
     private final static String DRIVER_CLASS_NAME="${DRIVER_CLASS_NAME}";
 
     public static void main(String[] args) {
-        generate("testmodel","Long");
+        System.out.print("请输入需要创建的表的名称，以\",\"作为间隔 ：");
+        Scanner scan  = new Scanner(System.in);
+		String test = scan.nextLine();
+		String[] tables = test.split(",");
+        generate("Long",tables);
     }
 
-    private static void generate(String table,String idType){
+    private static void generate(String idType,String... table){
         AutoGenerator mpg = new AutoGenerator();
 
         DataSourceConfig dataSourceConfig = new DataSourceConfig();

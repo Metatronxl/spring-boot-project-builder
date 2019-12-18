@@ -29,12 +29,12 @@ public class Main {
         // 数据库中包含的表
         String[] tables = new String[]{"meishi","test"};
 
-        ProjectConfig projectConfig = ProjectConfig.project("test2").com()
+        ProjectConfig projectConfig = ProjectConfig.project("test3").com()
                 .name("noisy")
                 .enableSwagger()
                 .setDataBaseType(DataBaseType.MYSQL)
                 .JDBCconfigure("jdbc:mysql://127.0.0.1:3306/meituan?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC", "root", "xulei2048")
-                .setOrmType(OrmType.MYBATIS)
+                .setOrmType(OrmType.JPA)
                 .setDataBaseConnectPool(DataBaseConnectPool.DRUID).enableDocker();
 
         CodeBuilder.getInstance().toFilePath("/Users/xulei2/Desktop/").build(projectConfig);
